@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday 🎉</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      height:100vh;
+      overflow:hidden;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#ff758c,#ff7eb3,#fad0c4);
+      background-size:400% 400%;
+      animation:bgMove 10s ease infinite;
+      padding:20px;
+    }
+
+    @keyframes bgMove{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    .card{
+      width:100%;
+      max-width:420px;
+      background:rgba(255,255,255,0.15);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.3);
+      border-radius:25px;
+      padding:35px 25px;
+      text-align:center;
+      color:white;
+      box-shadow:0 8px 25px rgba(0,0,0,0.2);
+      animation:fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .emoji{
+      font-size:70px;
+      animation:bounce 2s infinite;
+    }
+
+    @keyframes bounce{
+      0%,100%{
+        transform:translateY(0);
+      }
+      50%{
+        transform:translateY(-10px);
+      }
+    }
+
+    h1{
+      font-size:2.3rem;
+      margin-top:15px;
+      font-weight:700;
+    }
+
+    .name{
+      color:#fff700;
+      text-shadow:0 0 10px rgba(255,255,255,0.8);
+    }
+
+    p{
+      margin-top:18px;
+      font-size:1rem;
+      line-height:1.7;
+      color:#fdfdfd;
+    }
+
+    .btn{
+      margin-top:28px;
+      padding:14px 28px;
+      border:none;
+      border-radius:50px;
+      background:white;
+      color:#ff4f81;
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s ease;
+      box-shadow:0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover{
+      transform:scale(1.05);
+      background:#fff0f5;
+    }
+
+    .footer{
+      margin-top:20px;
+      font-size:0.9rem;
+      opacity:0.9;
+    }
+
+    /* Mobile Friendly */
+    @media(max-width:480px){
+      h1{
+        font-size:1.8rem;
+      }
+
+      .emoji{
+        font-size:55px;
+      }
+
+      p{
+        font-size:0.95rem;
+      }
+
+      .card{
+        padding:28px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <div class="emoji">🎂</div>
+
+    <h1>Happy Birthday <span class="name">Friend!</span> 🎉</h1>
+
+    <p>
+      Wishing you a day filled with happiness, laughter, love, and unforgettable memories.
+      May all your dreams come true and your smile shine brighter every year! 💖
+    </p>
+
+    <button class="btn" onclick="celebrate()">
+      Celebrate 🎊
+    </button>
+
+    <div class="footer">
+      Made with ❤️ for your special day
+    </div>
+  </div>
+
+  <script>
+    // Initial Confetti Burst
+    window.onload = () => {
+      launchConfetti();
+    };
+
+    function launchConfetti(){
+      const duration = 3000;
+      const end = Date.now() + duration;
+
+      (function frame() {
+        confetti({
+          particleCount: 5,
+          angle: 60,
+          spread: 80,
+          origin: { x: 0 }
+        });
+
+        confetti({
+          particleCount: 5,
+          angle: 120,
+          spread: 80,
+          origin: { x: 1 }
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      })();
+    }
+
+    function celebrate(){
+      confetti({
+        particleCount: 200,
+        spread: 120,
+        origin: { y: 0.6 }
+      });
+    }
+  </script>
+
+</body>
+</html>
